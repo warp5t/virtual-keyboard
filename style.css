@@ -28,6 +28,7 @@
   height: 46px;
   margin: 7px;
   background-color: rgba(18, 18, 54, 0.42);
+  color: aliceblue;
 }
 
 .btn-14{
@@ -47,11 +48,15 @@
 }
 
 .btn-43{
-  width: 95px;
+  width: 177px;
 }
 
 .btn-57{
-  width: 80px;
+  width: 63px;
+}
+
+.btn-55{
+  width: 61px;
 }
 
 .btn-56{
