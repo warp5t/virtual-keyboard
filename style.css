@@ -15,6 +15,8 @@
 
 .display-keyboard{
   margin: 0 auto;
+  padding: 30px;
+  font-size: 15px;
   width: 800px;
   height: 150px;
   background-color: rgb(246, 248, 248);
@@ -29,6 +31,21 @@
   margin: 7px;
   background-color: rgba(18, 18, 54, 0.42);
   color: aliceblue;
+  transition-duration: 0.5s;
+}
+
+.button-keyboard:hover{
+  cursor: pointer;
+}
+
+.button-active{
+  background-color: rgb(116, 148, 42);
+  transition-duration: 0.2s;
+}
+
+.button-active-mouse{
+  background-color: #f84711;
+  transition-duration: 0.2s;
 }
 
 .btn-14{
