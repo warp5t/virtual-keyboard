@@ -1,7 +1,7 @@
 const keyboard = {
   body: document.getElementById('body'),
   bodyKeyboard: document.createElement('div'),
-  display: document.createElement('div'),
+  display: document.createElement('pre'),
   ammountsBtn: 64,
   confBtn_1: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del',
@@ -44,7 +44,13 @@ function bodyCreating() {
 }
 bodyCreating();
 
-function btnFilling() {
+function atributesSetting() {
+  const displayBoard = document.querySelector('.display-keyboard');
+  displayBoard.setAttribute('readonly', 'readonly');
+}
+//atributesSetting();
+
+function btnStyling() {
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
     const button = document.createElement('div');
     button.classList.add('button-keyboard');
@@ -74,7 +80,7 @@ function btnFilling() {
     }
   }
 }
-btnFilling();
+btnStyling();
 
 function btnSubscribing() {
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
@@ -232,6 +238,11 @@ function mouseAnimating() {
       element.classList.remove('button-active-mouse');
     });
   });
+  keyboard.btns.forEach((element) => {
+    element.addEventListener('mouseout', () => {
+      element.classList.remove('button-active-mouse');
+    });
+  });
 }
 mouseAnimating();
 
@@ -244,6 +255,7 @@ mouseAnimating();
 
 function mouseTaping() {
   const displayBoard = document.querySelector('.display-keyboard');
+  let textHolder = document.createElement('div');
   keyboard.btns.forEach((element) => {
     element.addEventListener('mousedown', () => {
       const displayText = displayBoard.innerText;
@@ -253,10 +265,9 @@ function mouseTaping() {
       } else if (element.innerText === 'Backspace') {
         if (displayBoard.innerText.length > 1) {
           let text = displayBoard.textContent;
-          text = text.slice(-2);
+          text = text.slice(0, -1);
           displayBoard.textContent = text;
         }
-        console.log('cancel');
       } else if (element.innerText === 'Ctrl') {
         console.log('cancel');
       } else if (element.innerText === 'Win') {
@@ -272,6 +283,11 @@ function mouseTaping() {
       } else if (element.innerText === 'Del') {
         console.log('cancel');
       } else if (element.innerText === 'Enter') {
+          displayBoard.innerHTML += '<br>';
+        // const breakLine = String.fromCharCode(10);
+        // displayBoard.appendChild(breakLine);
+        // const breakLine = document.createTextNode(String.fromCharCode(10));
+        // displayBoard.append(breakLine);
         console.log('cancel');
       } else if (element.innerText === '←') {
         console.log('cancel');
