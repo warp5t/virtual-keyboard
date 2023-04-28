@@ -7,36 +7,32 @@ const keyboard = {
     'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del',
     'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter',
     'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
   confBtn_2: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
     'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del',
     'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter',
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
   confBtn_3_sgn: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspase',
     'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '\\', 'Del',
     'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter',
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
   confBtn_4: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
     'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del',
     'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter',
     'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
   confBtn_5: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
     'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del',
     'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter',
     'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', 'ё', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
   confBtn_6_sng: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspase',
     'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del',
     'CapsLock ', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter',
     'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', 'Ё', '↑',
-    'Shift', 'Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'],
-};
-
-const display = {
-  workWindow: document.querySelector('.display-keyboard'),
+    'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
 };
 
 function bodyCreating() {
@@ -46,7 +42,6 @@ function bodyCreating() {
   keyboard.display.classList.add('display-keyboard');
   keyboard.body.prepend(keyboard.display);
 }
-
 bodyCreating();
 
 function btnFilling() {
@@ -87,23 +82,6 @@ function btnSubscribing() {
   }
 }
 btnSubscribing();
-
-function mouseListening() {
-  for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
-    keyboard.btns[i].addEventListener('mousedown', () => {
-      console.log(keyboard.btns[i].textContent);
-      keyboard.btns[i].classList.add('button-active-mouse');
-    });
-  }
-
-  keyboard.btns.forEach((element) => {
-    element.addEventListener('mouseup', () => {
-      element.classList.remove('button-active-mouse');
-    });
-  });
-}
-
-mouseListening()
 
 function keyAnimating() {
   document.addEventListener('keydown', (event) => {
@@ -205,3 +183,118 @@ function keyAnimating() {
   });
 }
 keyAnimating();
+
+// ----------------------- carriage -----------------------------
+
+// function carriageInit() {
+//   const carriage = document.createElement('span');
+//   carriage.innerText = '|';
+//   carriage.classList.add('carriage');
+//   const displayBoard = document.querySelector('.display-keyboard');
+//   displayBoard.append(carriage);
+// }
+// carriageInit();
+
+// class Blink {
+//   constructor() {
+//     this.permission = true;
+//   }
+
+//   switching() {
+//     const carriage = document.querySelector('.carriage');
+//     if (this.permission === false) {
+//       carriage.classList.add('carriage-dissapear');
+//       this.permission = true;
+//     } else {
+//       carriage.classList.remove('carriage-dissapear');
+//       this.permission = false;
+//     }
+//   }
+// }
+
+// const blink = new Blink();
+
+// setInterval(() => {
+//   blink.switching();
+// }, 500);
+
+//  ----------------------- mouse -------------------------
+
+function mouseAnimating() {
+  for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
+    keyboard.btns[i].addEventListener('mousedown', () => {
+      console.log(keyboard.btns[i].textContent);
+      keyboard.btns[i].classList.add('button-active-mouse');
+    });
+  }
+  keyboard.btns.forEach((element) => {
+    element.addEventListener('mouseup', () => {
+      element.classList.remove('button-active-mouse');
+    });
+  });
+}
+mouseAnimating();
+
+// function elemCutting() {
+//   const displayBoard = document.querySelector('.display-keyboard'); 
+//   let text = displayBoard.textContent;
+//   text = text.slice(0, -2) + text.slice(-1);
+//   displayBoard.textContent = text;
+// }
+
+function mouseTaping() {
+  const displayBoard = document.querySelector('.display-keyboard');
+  keyboard.btns.forEach((element) => {
+    element.addEventListener('mousedown', () => {
+      const displayText = displayBoard.innerText;
+      if (element.innerText === '') {
+        const spaceSymb = document.createTextNode(String.fromCharCode(160));
+        displayBoard.appendChild(spaceSymb);
+      } else if (element.innerText === 'Backspace') {
+        if (displayBoard.innerText.length > 1) {
+          let text = displayBoard.textContent;
+          text = text.slice(-2);
+          displayBoard.textContent = text;
+        }
+        console.log('cancel');
+      } else if (element.innerText === 'Ctrl') {
+        console.log('cancel');
+      } else if (element.innerText === 'Win') {
+        console.log('cancel');
+      } else if (element.innerText === 'Alt') {
+        console.log('cancel');
+      } else if (element.innerText === 'CapsLock') {
+        console.log('cancel');
+      } else if (element.innerText === 'Shift') {
+        console.log('cancel');
+      } else if (element.innerText === 'Tab') {
+        console.log('cancel');
+      } else if (element.innerText === 'Del') {
+        console.log('cancel');
+      } else if (element.innerText === 'Enter') {
+        console.log('cancel');
+      } else if (element.innerText === '←') {
+        console.log('cancel');
+      } else if (element.innerText === '↓') {
+        console.log('cancel');
+      } else if (element.innerText === '→') {
+        console.log('cancel');
+      } else if (element.innerText === '↑') {
+        console.log('cancel');
+      } else {
+        displayBoard.textContent = displayText + element.textContent;
+      }
+      // else if (displayBoard.innerText.length === 1) {
+      //   displayBoard.textContent = element.textContent + displayText;
+      //   carriageInit();
+      //   elemCutting();
+      // } else if (displayBoard.innerText.length > 1) {
+      //   displayBoard.textContent = displayText + element.textContent;
+      //   carriageInit();
+      //   elemCutting();
+      // }
+      console.log(element.textContent);
+    });
+  });
+}
+mouseTaping();

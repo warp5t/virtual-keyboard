@@ -14,11 +14,13 @@
 }
 
 .display-keyboard{
+  box-sizing: content-box;
   margin: 0 auto;
-  padding: 30px;
-  font-size: 15px;
+  padding: 20px;
+  font-size: 20px;
   width: 800px;
   height: 150px;
+  color: black;
   background-color: rgb(246, 248, 248);
 }
 
@@ -46,6 +48,7 @@
 .button-active-mouse{
   background-color: #f84711;
   transition-duration: 0.2s;
+  border-radius: 10%;
 }
 
 .btn-14{
@@ -84,3 +87,11 @@
   width: 361px;
 }
 
+/* .carriage{
+  color: rgb(255, 87, 9);
+  font-size: 20px;
+}
+
+.carriage-dissapear{
+  opacity: 0;
+} */
