@@ -1,7 +1,7 @@
 const keyboard = {
   body: document.getElementById('body'),
   bodyKeyboard: document.createElement('div'),
-  display: document.createElement('pre'),
+  display: document.createElement('textarea'),
   ammountsBtn: 64,
   confBtn_1: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del',
@@ -35,20 +35,67 @@ const keyboard = {
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
 };
 
+class ButtonsParameters {
+  constructor() {
+    this.shift = false;
+    this.alt = false;
+    this.tab = false;
+    this.capsLock = false;
+    this.ctrl = false;
+  }
+
+  switchingAlt() {
+    if (this.alt === false) {
+      this.alt = true;
+    } else {
+      this.alt = false;
+    }
+  }
+
+  switchingShift() {
+    if (this.shift === false) {
+      this.shift = true;
+    } else {
+      this.shift = false;
+    }
+  }
+
+  switchingTab() {
+    if (this.tab === false) {
+      this.tab = true;
+    } else {
+      this.tab = false;
+    }
+  }
+
+  switchingCapsLock() {
+    if (this.capsLock === false) {
+      this.capsLock = true;
+    } else {
+      this.capsLock = false;
+    }
+  }
+
+  switchingCtrl() {
+    if (this.ctrl === false) {
+      this.ctrl = true;
+    } else {
+      this.ctrl = false;
+    }
+  }
+}
+
+const btnParam = new ButtonsParameters();
+
 function bodyCreating() {
   keyboard.body.classList.add('body-main');
   keyboard.bodyKeyboard.classList.add('body-keyboard');
   keyboard.body.prepend(keyboard.bodyKeyboard);
   keyboard.display.classList.add('display-keyboard');
+  keyboard.display.id = 'textarea';
   keyboard.body.prepend(keyboard.display);
 }
 bodyCreating();
-
-function atributesSetting() {
-  const displayBoard = document.querySelector('.display-keyboard');
-  displayBoard.setAttribute('readonly', 'readonly');
-}
-//atributesSetting();
 
 function btnStyling() {
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
@@ -254,51 +301,49 @@ mouseAnimating();
 // }
 
 function mouseTaping() {
-  const displayBoard = document.querySelector('.display-keyboard');
-  let textHolder = document.createElement('div');
+  const displayBoard = document.getElementById('textarea');
   keyboard.btns.forEach((element) => {
     element.addEventListener('mousedown', () => {
-      const displayText = displayBoard.innerText;
+      const displayText = displayBoard.value;
       if (element.innerText === '') {
         const spaceSymb = document.createTextNode(String.fromCharCode(160));
         displayBoard.appendChild(spaceSymb);
       } else if (element.innerText === 'Backspace') {
-        if (displayBoard.innerText.length > 1) {
-          let text = displayBoard.textContent;
-          text = text.slice(0, -1);
-          displayBoard.textContent = text;
-        }
+        let text = displayBoard.value;
+        text = text.slice(0, -1);
+        displayBoard.value = text;
       } else if (element.innerText === 'Ctrl') {
-        console.log('cancel');
+        btnParam.switchingCtrl();
       } else if (element.innerText === 'Win') {
         console.log('cancel');
       } else if (element.innerText === 'Alt') {
-        console.log('cancel');
+        btnParam.switchingAlt();
       } else if (element.innerText === 'CapsLock') {
-        console.log('cancel');
+        btnParam.switchingCapsLock();
+        if (btnParam.capsLock === false) {
+          element.classList.remove('tab-activ');
+        } else if (btnParam.capsLock === true) {
+          element.classList.add('tab-activ');
+        }
       } else if (element.innerText === 'Shift') {
-        console.log('cancel');
+        btnParam.switchingShift();
       } else if (element.innerText === 'Tab') {
-        console.log('cancel');
+        displayBoard.value += '\t';
+        btnParam.switchingTab();
       } else if (element.innerText === 'Del') {
-        console.log('cancel');
+        console.log('cancel Del');
       } else if (element.innerText === 'Enter') {
-          displayBoard.innerHTML += '<br>';
-        // const breakLine = String.fromCharCode(10);
-        // displayBoard.appendChild(breakLine);
-        // const breakLine = document.createTextNode(String.fromCharCode(10));
-        // displayBoard.append(breakLine);
-        console.log('cancel');
+        displayBoard.value += '\n';
       } else if (element.innerText === '←') {
-        console.log('cancel');
+        displayBoard.value += '←';
       } else if (element.innerText === '↓') {
-        console.log('cancel');
+        displayBoard.value += '↓';
       } else if (element.innerText === '→') {
-        console.log('cancel');
+        displayBoard.value += '→';
       } else if (element.innerText === '↑') {
-        console.log('cancel');
+        displayBoard.value += '↑';
       } else {
-        displayBoard.textContent = displayText + element.textContent;
+        displayBoard.value = displayText + element.textContent;
       }
       // else if (displayBoard.innerText.length === 1) {
       //   displayBoard.textContent = element.textContent + displayText;
@@ -309,7 +354,19 @@ function mouseTaping() {
       //   carriageInit();
       //   elemCutting();
       // }
-      console.log(element.textContent);
+    });
+    element.addEventListener('mouseup', () => {
+      if (element.innerText === 'Ctrl') {
+        btnParam.switchingCtrl();
+      } else if (element.innerText === 'Win') {
+        console.log('cancel Win');
+      } else if (element.innerText === 'Alt') {
+        btnParam.switchingAlt();
+        console.log('cancel');
+      } else if (element.innerText === 'Shift') {
+        btnParam.switchingShift();
+        console.log(btnParam.shift, 'btnParam.shift');
+      }
     });
   });
 }

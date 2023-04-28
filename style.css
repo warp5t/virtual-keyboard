@@ -14,7 +14,6 @@
 }
 
 .display-keyboard{
-  display: inline-block;
   box-sizing: content-box;
   margin: 0 auto;
   padding: 20px;
@@ -24,10 +23,8 @@
   color: black;
   background-color: rgb(246, 248, 248);
   word-wrap: break-word;
-}
-
-.text-holder{
-  
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .button-keyboard{
@@ -92,6 +89,11 @@
 
 .btn-60{
   width: 361px;
+}
+
+.tab-activ{
+  background-color:rgba(207, 221, 12, 0.911);
+  color: blue;
 }
 
 /* .carriage{
