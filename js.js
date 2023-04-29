@@ -97,6 +97,11 @@ function bodyCreating() {
 }
 bodyCreating();
 
+function atributeSetting() {
+  keyboard.display.setAttribute('readonly', 'readonly');
+}
+atributeSetting();
+
 function btnStyling() {
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
     const button = document.createElement('div');
@@ -136,52 +141,53 @@ function btnSubscribing() {
 }
 btnSubscribing();
 
-function keyAnimating() {
+function keyPermAnimating() {
+  const buttons = document.querySelectorAll('.button-keyboard');
   document.addEventListener('keydown', (event) => {
     console.log(event.keyCode, ' - keyCode');
     console.log(event.charCode, ' - charCode');
     console.log(event.which, '- which');
     console.log(event.key, ' - key');
     console.log(event.code, ' - code');
-    keyboard.btns.forEach((element) => {
+    buttons.forEach((element) => {
       if (event.code === 'ShiftLeft') {
         console.log('code 106');
-        keyboard.btns[42].classList.add('button-active');
+        buttons[42].classList.add('button-active');
       } else if (event.code === 'ShiftRight') {
         console.log('code 108');
-        keyboard.btns[54].classList.add('button-active');
+        buttons[54].classList.add('button-active');
       } else if (event.code === 'ControlLeft') {
-        keyboard.btns[55].classList.add('button-active');
+        buttons[55].classList.add('button-active');
         console.log('code 110');
       } else if (event.code === 'ControlRight') {
-        keyboard.btns[60].classList.add('button-active');
+        buttons[60].classList.add('button-active');
         console.log('code 112');
       } else if (event.code === 'ArrowLeft') {
-        keyboard.btns[61].classList.add('button-active');
+        buttons[61].classList.add('button-active');
         console.log('code 114');
       } else if (event.code === 'ArrowRight') {
-        keyboard.btns[63].classList.add('button-active');
+        buttons[63].classList.add('button-active');
         console.log('code 116');
       } else if (event.code === 'ArrowUp') {
-        keyboard.btns[53].classList.add('button-active');
+        buttons[53].classList.add('button-active');
         console.log('code 118');
       } else if (event.code === 'ArrowDown') {
-        keyboard.btns[62].classList.add('button-active');
+        buttons[62].classList.add('button-active');
         console.log('code 120');
       } else if (event.code === 'Delete') {
-        keyboard.btns[28].classList.add('button-active');
+        buttons[28].classList.add('button-active');
         console.log('code 122');
       } else if (event.code === 'AltLeft') {
-        keyboard.btns[57].classList.add('button-active');
+        buttons[57].classList.add('button-active');
         console.log('code 122');
       } else if (event.code === 'AltRight') {
-        keyboard.btns[59].classList.add('button-active');
+        buttons[59].classList.add('button-active');
         console.log('code 122');
       } else if (event.code === 'Space') {
-        keyboard.btns[58].classList.add('button-active');
+        buttons[58].classList.add('space-activ');
         console.log('code 128');
       } else if (event.code === 'Slash') {
-        keyboard.btns[52].classList.add('button-active');
+        buttons[52].classList.add('button-active');
         console.log('code 128');
       } else if (element.textContent === event.key) {
         element.classList.add('button-active');
@@ -191,43 +197,43 @@ function keyAnimating() {
   document.addEventListener('keyup', (event) => {
     keyboard.btns.forEach((element) => {
       if (event.code === 'ShiftLeft') {
-        console.log('code 106');
-        keyboard.btns[42].classList.remove('button-active');
+        console.log('code 206');
+        buttons[42].classList.remove('button-active');
       } else if (event.code === 'ShiftRight') {
-        console.log('code 108');
-        keyboard.btns[54].classList.remove('button-active');
+        console.log('code 210');
+        buttons[54].classList.remove('button-active');
       } else if (event.code === 'ControlLeft') {
-        keyboard.btns[55].classList.remove('button-active');
-        console.log('code 110');
+        buttons[55].classList.remove('button-active');
+        console.log('code 216');
       } else if (event.code === 'ControlRight') {
-        keyboard.btns[60].classList.remove('button-active');
-        console.log('code 112');
+        buttons[60].classList.remove('button-active');
+        console.log('code 220');
       } else if (event.code === 'ArrowLeft') {
-        keyboard.btns[61].classList.remove('button-active');
+        buttons[61].classList.remove('button-active');
         console.log('code 114');
       } else if (event.code === 'ArrowRight') {
-        keyboard.btns[63].classList.remove('button-active');
+        buttons[63].classList.remove('button-active');
         console.log('code 116');
       } else if (event.code === 'ArrowUp') {
-        keyboard.btns[53].classList.remove('button-active');
+        buttons[53].classList.remove('button-active');
         console.log('code 118');
       } else if (event.code === 'ArrowDown') {
-        keyboard.btns[62].classList.remove('button-active');
+        buttons[62].classList.remove('button-active');
         console.log('code 120');
       } else if (event.code === 'Delete') {
-        keyboard.btns[28].classList.remove('button-active');
+        buttons[28].classList.remove('button-active');
         console.log('code 122');
       } else if (event.code === 'AltLeft') {
-        keyboard.btns[57].classList.remove('button-active');
+        buttons[57].classList.remove('button-active');
         console.log('code 122');
       } else if (event.code === 'AltRight') {
-        keyboard.btns[59].classList.remove('button-active');
-        console.log('code 122');
+        buttons[59].classList.remove('button-active');
+        console.log('code 243');
       } else if (event.code === 'Space') {
-        keyboard.btns[58].classList.remove('button-active');
+        buttons[58].classList.remove('space-activ');
         console.log('code 128');
-      } else if (event.which === 191) {
-        keyboard.btns[52].classList.remove('button-active');
+      } else if (event.code === 'Slash') {
+        buttons[52].classList.remove('button-active');
         console.log('code 128 up');
       } else if (element.textContent === event.key) {
         element.classList.remove('button-active');
@@ -235,7 +241,7 @@ function keyAnimating() {
     });
   });
 }
-keyAnimating();
+keyPermAnimating();
 
 // ----------------------- carriage -----------------------------
 
@@ -306,8 +312,7 @@ function mouseTaping() {
     element.addEventListener('mousedown', () => {
       const displayText = displayBoard.value;
       if (element.innerText === '') {
-        const spaceSymb = document.createTextNode(String.fromCharCode(160));
-        displayBoard.appendChild(spaceSymb);
+        displayBoard.value += ' ';
       } else if (element.innerText === 'Backspace') {
         let text = displayBoard.value;
         text = text.slice(0, -1);
@@ -321,9 +326,9 @@ function mouseTaping() {
       } else if (element.innerText === 'CapsLock') {
         btnParam.switchingCapsLock();
         if (btnParam.capsLock === false) {
-          element.classList.remove('tab-activ');
+          element.classList.remove('caps-activ');
         } else if (btnParam.capsLock === true) {
-          element.classList.add('tab-activ');
+          element.classList.add('caps-activ');
         }
       } else if (element.innerText === 'Shift') {
         btnParam.switchingShift();
@@ -371,3 +376,64 @@ function mouseTaping() {
   });
 }
 mouseTaping();
+
+function keyTapping() {
+  const displayBoard = document.getElementById('textarea');
+  document.addEventListener('keydown', (event) => {
+    console.log(event.key);
+    if (event.key === 'ArrowRight') {
+      displayBoard.value += '→';
+    } else if (event.key === 'ArrowLeft') {
+      displayBoard.value += '←';
+    } else if (event.key === 'ArrowDown') {
+      displayBoard.value += '↓';
+    } else if (event.key === 'ArrowUp') {
+      displayBoard.value += '↑';
+    } else if (event.code === 'Space') {
+      displayBoard.value += ' ';
+    } else if (event.code === 'Slash') {
+      displayBoard.value += '/';
+    } else if (event.code === 'Backspace') {
+      let text = displayBoard.value;
+      text = text.slice(0, -1);
+      displayBoard.value = text;
+    } else if (event.code === 'Enter') {
+      displayBoard.value += '\n';
+    } else if (event.code === 'Tab') {
+      displayBoard.value += '';
+    } else if (event.code === 'CapsLock') {
+      btnParam.switchingCapsLock();
+      if (btnParam.capsLock === false) {
+        keyboard.btns[29].classList.remove('caps-activ');
+      } else if (btnParam.capsLock === true) {
+        keyboard.btns[29].classList.add('caps-activ');
+      }
+      displayBoard.value += '';
+    } else if (event.key === 'Shift') {
+      btnParam.switchingShift();
+      displayBoard.value += '';
+    } else if (event.key === 'Control') {
+      btnParam.switchingCtrl();
+      displayBoard.value += '';
+    } else if (event.key === 'Alt') {
+      btnParam.switchingAlt();
+      displayBoard.value += '';
+    } else {
+      displayBoard.value += event.key;
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Shift') {
+      btnParam.switchingShift();
+      displayBoard.value += '';
+    } else if (event.key === 'Control') {
+      btnParam.switchingCtrl();
+      displayBoard.value += '';
+    } else if (event.key === 'Alt') {
+      btnParam.switchingAlt();
+      displayBoard.value += '';
+    }
+  });
+}
+
+keyTapping();
