@@ -101,6 +101,11 @@
   transition-duration: 0.2s;
 }
 
+.instruction-text{
+  margin: 0 auto;
+  padding: 10px;
+}
+
 /* .carriage{
   color: rgb(255, 87, 9);
   font-size: 20px;

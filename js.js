@@ -3,32 +3,34 @@ const keyboard = {
   bodyKeyboard: document.createElement('div'),
   display: document.createElement('textarea'),
   ammountsBtn: 64,
+  codeConfig: 1,
+  lang: 'engl',
   confBtn_1: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Del',
     'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter',
     'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '↑',
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
-  confBtn_2: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
+  confBtn_2: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del',
     'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter',
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '↑',
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
-  confBtn_3_sgn: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspase',
+  confBtn_3_sgn: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace',
     'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '\\', 'Del',
     'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter',
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '↑',
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
-  confBtn_4: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
+  confBtn_4: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del',
     'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter',
     'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', '↑',
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
-  confBtn_5: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspase',
+  confBtn_5: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del',
     'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter',
     'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', 'ё', '↑',
     'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Ctrl', '←', '↓', '→'],
-  confBtn_6_sng: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspase',
+  confBtn_6_sng: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace',
     'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Del',
     'CapsLock ', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter',
     'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', 'Ё', '↑',
@@ -42,6 +44,7 @@ class ButtonsParameters {
     this.tab = false;
     this.capsLock = false;
     this.ctrl = false;
+    this.win = false;
   }
 
   switchingAlt() {
@@ -83,6 +86,14 @@ class ButtonsParameters {
       this.ctrl = false;
     }
   }
+
+  switchingWin() {
+    if (this.win === false) {
+      this.win = true;
+    } else {
+      this.win = false;
+    }
+  }
 }
 
 const btnParam = new ButtonsParameters();
@@ -94,6 +105,15 @@ function bodyCreating() {
   keyboard.display.classList.add('display-keyboard');
   keyboard.display.id = 'textarea';
   keyboard.body.prepend(keyboard.display);
+
+  const manual = document.createElement('div');
+  const createdOS = document.createElement('div');
+  manual.classList.add('instruction-text');
+  createdOS.classList.add('instruction-text');
+  manual.textContent = 'Смена языка shift + ctrl';
+  createdOS.textContent = 'Клавиатура создана в Ubuntu 16.04';
+  keyboard.body.append(manual);
+  keyboard.body.append(createdOS);
 }
 bodyCreating();
 
@@ -134,9 +154,41 @@ function btnStyling() {
 }
 btnStyling();
 
+function configSetting() {
+  localStorage.setItem('keyboardLang', JSON.stringify(keyboard.lang));
+  localStorage.setItem('keyboardConfig', JSON.stringify(keyboard.codeConfig));
+}
+
 function btnSubscribing() {
+  if (btnParam.ctrl === true && btnParam.shift === true) {
+    if (keyboard.lang === 'engl') {
+      keyboard.lang = 'rus';
+      keyboard.codeConfig = 4;
+      configSetting();
+    } else if (keyboard.lang === 'rus') {
+      keyboard.lang = 'engl';
+      keyboard.codeConfig = 1;
+      configSetting();
+    }
+  }
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
-    keyboard.btns[i].innerText = keyboard.confBtn_1[i];
+    if (keyboard.lang === 'engl') {
+      if (keyboard.codeConfig === 1) {
+        keyboard.btns[i].innerText = keyboard.confBtn_1[i];
+      } else if (keyboard.codeConfig === 2) {
+        keyboard.btns[i].innerText = keyboard.confBtn_2[i];
+      } else if (keyboard.codeConfig === 3) {
+        keyboard.btns[i].innerText = keyboard.confBtn_3_sgn[i];
+      }
+    } else if (keyboard.lang === 'rus') {
+      if (keyboard.codeConfig === 4) {
+        keyboard.btns[i].innerText = keyboard.confBtn_4[i];
+      } else if (keyboard.codeConfig === 5) {
+        keyboard.btns[i].innerText = keyboard.confBtn_5[i];
+      } else if (keyboard.codeConfig === 6) {
+        keyboard.btns[i].innerText = keyboard.confBtn_6_sng[i];
+      }
+    }
   }
 }
 btnSubscribing();
@@ -144,51 +196,33 @@ btnSubscribing();
 function keyPermAnimating() {
   const buttons = document.querySelectorAll('.button-keyboard');
   document.addEventListener('keydown', (event) => {
-    console.log(event.keyCode, ' - keyCode');
-    console.log(event.charCode, ' - charCode');
-    console.log(event.which, '- which');
-    console.log(event.key, ' - key');
-    console.log(event.code, ' - code');
     buttons.forEach((element) => {
       if (event.code === 'ShiftLeft') {
-        console.log('code 106');
         buttons[42].classList.add('button-active');
       } else if (event.code === 'ShiftRight') {
-        console.log('code 108');
         buttons[54].classList.add('button-active');
       } else if (event.code === 'ControlLeft') {
         buttons[55].classList.add('button-active');
-        console.log('code 110');
       } else if (event.code === 'ControlRight') {
         buttons[60].classList.add('button-active');
-        console.log('code 112');
       } else if (event.code === 'ArrowLeft') {
         buttons[61].classList.add('button-active');
-        console.log('code 114');
       } else if (event.code === 'ArrowRight') {
         buttons[63].classList.add('button-active');
-        console.log('code 116');
       } else if (event.code === 'ArrowUp') {
         buttons[53].classList.add('button-active');
-        console.log('code 118');
       } else if (event.code === 'ArrowDown') {
         buttons[62].classList.add('button-active');
-        console.log('code 120');
       } else if (event.code === 'Delete') {
         buttons[28].classList.add('button-active');
-        console.log('code 122');
       } else if (event.code === 'AltLeft') {
         buttons[57].classList.add('button-active');
-        console.log('code 122');
       } else if (event.code === 'AltRight') {
         buttons[59].classList.add('button-active');
-        console.log('code 122');
       } else if (event.code === 'Space') {
         buttons[58].classList.add('space-activ');
-        console.log('code 128');
       } else if (event.code === 'Slash') {
         buttons[52].classList.add('button-active');
-        console.log('code 128');
       } else if (element.textContent === event.key) {
         element.classList.add('button-active');
       }
@@ -197,44 +231,31 @@ function keyPermAnimating() {
   document.addEventListener('keyup', (event) => {
     keyboard.btns.forEach((element) => {
       if (event.code === 'ShiftLeft') {
-        console.log('code 206');
         buttons[42].classList.remove('button-active');
       } else if (event.code === 'ShiftRight') {
-        console.log('code 210');
         buttons[54].classList.remove('button-active');
       } else if (event.code === 'ControlLeft') {
         buttons[55].classList.remove('button-active');
-        console.log('code 216');
       } else if (event.code === 'ControlRight') {
         buttons[60].classList.remove('button-active');
-        console.log('code 220');
       } else if (event.code === 'ArrowLeft') {
         buttons[61].classList.remove('button-active');
-        console.log('code 114');
       } else if (event.code === 'ArrowRight') {
         buttons[63].classList.remove('button-active');
-        console.log('code 116');
       } else if (event.code === 'ArrowUp') {
         buttons[53].classList.remove('button-active');
-        console.log('code 118');
       } else if (event.code === 'ArrowDown') {
         buttons[62].classList.remove('button-active');
-        console.log('code 120');
       } else if (event.code === 'Delete') {
         buttons[28].classList.remove('button-active');
-        console.log('code 122');
       } else if (event.code === 'AltLeft') {
         buttons[57].classList.remove('button-active');
-        console.log('code 122');
       } else if (event.code === 'AltRight') {
         buttons[59].classList.remove('button-active');
-        console.log('code 243');
       } else if (event.code === 'Space') {
         buttons[58].classList.remove('space-activ');
-        console.log('code 128');
       } else if (event.code === 'Slash') {
         buttons[52].classList.remove('button-active');
-        console.log('code 128 up');
       } else if (element.textContent === event.key) {
         element.classList.remove('button-active');
       }
@@ -282,7 +303,7 @@ keyPermAnimating();
 function mouseAnimating() {
   for (let i = 0; keyboard.ammountsBtn > i; i += 1) {
     keyboard.btns[i].addEventListener('mousedown', () => {
-      console.log(keyboard.btns[i].textContent);
+      // console.log(keyboard.btns[i].textContent);
       keyboard.btns[i].classList.add('button-active-mouse');
     });
   }
@@ -299,13 +320,6 @@ function mouseAnimating() {
 }
 mouseAnimating();
 
-// function elemCutting() {
-//   const displayBoard = document.querySelector('.display-keyboard'); 
-//   let text = displayBoard.textContent;
-//   text = text.slice(0, -2) + text.slice(-1);
-//   displayBoard.textContent = text;
-// }
-
 function mouseTaping() {
   const displayBoard = document.getElementById('textarea');
   keyboard.btns.forEach((element) => {
@@ -320,7 +334,7 @@ function mouseTaping() {
       } else if (element.innerText === 'Ctrl') {
         btnParam.switchingCtrl();
       } else if (element.innerText === 'Win') {
-        console.log('cancel');
+        // console.log('cancel');
       } else if (element.innerText === 'Alt') {
         btnParam.switchingAlt();
       } else if (element.innerText === 'CapsLock') {
@@ -336,7 +350,7 @@ function mouseTaping() {
         displayBoard.value += '\t';
         btnParam.switchingTab();
       } else if (element.innerText === 'Del') {
-        console.log('cancel Del');
+        // console.log('cancel Del');
       } else if (element.innerText === 'Enter') {
         displayBoard.value += '\n';
       } else if (element.innerText === '←') {
@@ -350,27 +364,17 @@ function mouseTaping() {
       } else {
         displayBoard.value = displayText + element.textContent;
       }
-      // else if (displayBoard.innerText.length === 1) {
-      //   displayBoard.textContent = element.textContent + displayText;
-      //   carriageInit();
-      //   elemCutting();
-      // } else if (displayBoard.innerText.length > 1) {
-      //   displayBoard.textContent = displayText + element.textContent;
-      //   carriageInit();
-      //   elemCutting();
-      // }
     });
     element.addEventListener('mouseup', () => {
       if (element.innerText === 'Ctrl') {
         btnParam.switchingCtrl();
       } else if (element.innerText === 'Win') {
-        console.log('cancel Win');
+      //  console.log('cancel Win');
       } else if (element.innerText === 'Alt') {
         btnParam.switchingAlt();
-        console.log('cancel');
+      //  console.log('cancel');
       } else if (element.innerText === 'Shift') {
         btnParam.switchingShift();
-        console.log(btnParam.shift, 'btnParam.shift');
       }
     });
   });
@@ -380,7 +384,7 @@ mouseTaping();
 function keyTapping() {
   const displayBoard = document.getElementById('textarea');
   document.addEventListener('keydown', (event) => {
-    console.log(event.key);
+   // console.log(event.key);
     if (event.key === 'ArrowRight') {
       displayBoard.value += '→';
     } else if (event.key === 'ArrowLeft') {
@@ -405,12 +409,27 @@ function keyTapping() {
       btnParam.switchingCapsLock();
       if (btnParam.capsLock === false) {
         keyboard.btns[29].classList.remove('caps-activ');
+        if (keyboard.lang === 'engl') {
+          keyboard.codeConfig = 1;
+        } else if (keyboard.lang === 'rus') {
+          keyboard.codeConfig = 4;
+        }
       } else if (btnParam.capsLock === true) {
         keyboard.btns[29].classList.add('caps-activ');
+        if (keyboard.lang === 'engl') {
+          keyboard.codeConfig = 2;
+        } else if (keyboard.lang === 'rus') {
+          keyboard.codeConfig = 5;
+        }
       }
       displayBoard.value += '';
     } else if (event.key === 'Shift') {
       btnParam.switchingShift();
+      if (keyboard.lang === 'engl') {
+        keyboard.codeConfig = 3;
+      } else if (keyboard.lang === 'rus') {
+        keyboard.codeConfig = 6;
+      }
       displayBoard.value += '';
     } else if (event.key === 'Control') {
       btnParam.switchingCtrl();
@@ -421,10 +440,16 @@ function keyTapping() {
     } else {
       displayBoard.value += event.key;
     }
+    btnSubscribing();
   });
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener('keyup', (event) => {
     if (event.key === 'Shift') {
       btnParam.switchingShift();
+      if (keyboard.lang === 'engl') {
+        keyboard.codeConfig = 1;
+      } else if (keyboard.lang === 'rus') {
+        keyboard.codeConfig = 4;
+      }
       displayBoard.value += '';
     } else if (event.key === 'Control') {
       btnParam.switchingCtrl();
@@ -433,7 +458,19 @@ function keyTapping() {
       btnParam.switchingAlt();
       displayBoard.value += '';
     }
+    btnSubscribing();
   });
 }
 
 keyTapping();
+
+function apdating() {
+  if (JSON.parse(localStorage.getItem('keyboardLang')) !== null) {
+    keyboard.lang = JSON.parse(localStorage.getItem('keyboardLang'));
+  }
+  if (JSON.parse(localStorage.getItem('keyboardConfig')) !== null) {
+    keyboard.codeConfig = JSON.parse(localStorage.getItem('keyboardConfig'));
+  }
+  btnSubscribing();
+}
+apdating();
