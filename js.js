@@ -111,7 +111,7 @@ function bodyCreating() {
   manual.classList.add('instruction-text');
   createdOS.classList.add('instruction-text');
   manual.textContent = 'Смена языка shift + ctrl';
-  createdOS.textContent = 'Клавиатура создана в Ubuntu 16.04';
+  createdOS.textContent = 'Клавиатура создана в Ubuntu 16.04 но желательно проверять в ОС Windows';
   keyboard.body.append(manual);
   keyboard.body.append(createdOS);
 }
@@ -264,40 +264,6 @@ function keyPermAnimating() {
 }
 keyPermAnimating();
 
-// ----------------------- carriage -----------------------------
-
-// function carriageInit() {
-//   const carriage = document.createElement('span');
-//   carriage.innerText = '|';
-//   carriage.classList.add('carriage');
-//   const displayBoard = document.querySelector('.display-keyboard');
-//   displayBoard.append(carriage);
-// }
-// carriageInit();
-
-// class Blink {
-//   constructor() {
-//     this.permission = true;
-//   }
-
-//   switching() {
-//     const carriage = document.querySelector('.carriage');
-//     if (this.permission === false) {
-//       carriage.classList.add('carriage-dissapear');
-//       this.permission = true;
-//     } else {
-//       carriage.classList.remove('carriage-dissapear');
-//       this.permission = false;
-//     }
-//   }
-// }
-
-// const blink = new Blink();
-
-// setInterval(() => {
-//   blink.switching();
-// }, 500);
-
 //  ----------------------- mouse -------------------------
 
 function mouseAnimating() {
@@ -384,7 +350,7 @@ mouseTaping();
 function keyTapping() {
   const displayBoard = document.getElementById('textarea');
   document.addEventListener('keydown', (event) => {
-   // console.log(event.key);
+    // console.log(event.key);
     if (event.key === 'ArrowRight') {
       displayBoard.value += '→';
     } else if (event.key === 'ArrowLeft') {
